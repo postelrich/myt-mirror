@@ -1,0 +1,24 @@
+{
+    "row_heights": [20, 30, 30, 20],
+    "modules": [
+        [
+            {
+                "width": 3,
+                "name": "foo"
+            }
+        ],
+        [
+            {
+                "width": 2,
+                "name": "bar"
+            },
+            {
+                "width": 7
+            },
+            {
+                "width": 3,
+                "name": "foobar"
+            }
+        ]
+    ]
+}
