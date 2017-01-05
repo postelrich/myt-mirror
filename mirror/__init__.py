@@ -10,5 +10,4 @@ config_path = os.path.expanduser("~/prj/myt-mirror/mirror_config.json")
 config = load_config(config_path)
 app.config.update(config)
 
-from mirror.views import index
-
+import mirror.views
