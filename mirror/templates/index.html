@@ -2,17 +2,18 @@
 
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="static/css/mirror.css">
 </head>
 
 <body>
   <div class="container">
     {% for row_height, modules in module_rows %}
-    <div class="row" style="height:{{ row_height }}%">
+    <div class="row" style="height:{{ row_height }}vh">
       {% if modules %}
       {% for module in modules %}
         <div class="col s{{ module.width }}">
           {% if module.name %}
-            <h1>{{ module.name }}<h1>
+            {{ module.name }}
           {% endif %}
         </div>
       {% endfor %}
@@ -23,5 +24,6 @@
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
 </body>
 

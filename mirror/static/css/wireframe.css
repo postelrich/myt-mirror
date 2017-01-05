@@ -1,0 +1,10 @@
+
+.row{
+  border: 1px solid #FFFFFF;
+  border-bottom: none;
+}
+
+.col{
+  border-right: 1px solid #FFFFFF;
+  border-bottom: none;
+}
