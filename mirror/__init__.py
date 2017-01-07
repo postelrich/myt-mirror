@@ -1,3 +1,4 @@
+import jinja2
 import os
 from flask import Flask
 from flask_socketio import SocketIO
@@ -9,5 +10,9 @@ socketio = SocketIO(app)
 config_path = os.path.expanduser("~/prj/myt-mirror/mirror_config.json")
 config = load_config(config_path)
 app.config.update(config)
+loaders = [app.jinja_loader]
+for name in config['module_names']:
+    loaders.append(jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'modules', name)))
+app.jinja_loader = jinja2.ChoiceLoader(loaders)
 
 import mirror.views

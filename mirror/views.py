@@ -6,6 +6,7 @@ from mirror import app
 @app.route('/')
 @app.route('/index')
 def index():
+    print(app.config['module_rows'])
     return render_template("index.html", module_rows=app.config['module_rows'])
 
 

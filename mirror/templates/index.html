@@ -15,7 +15,11 @@
       {% if modules %}
       {% for module in modules %}
         <div class="col s{{ module.width }}">
-          {% if module.name %}
+          {% if module.html %}
+            {% with config=module.config %}
+              {% include module.html %}
+            {% endwith %}
+          {% else %}
             {{ module.name }}
           {% endif %}
         </div>

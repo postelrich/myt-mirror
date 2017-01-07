@@ -4,7 +4,11 @@
         [
             {
                 "width": 3,
-                "name": "foo"
+                "name": "counter",
+                "config": {
+                    "operator": "inc",
+                    "start": "5"
+                }
             }
         ],
         [
