@@ -13,17 +13,21 @@
     {% for row_height, modules in module_rows %}
     <div class="row" style="height:{{ row_height }}vh">
       {% if modules %}
-      {% for module in modules %}
-        <div class="col s{{ module.width }}">
-          {% if module.html %}
-            {% with config=module.config %}
-              {% include module.html %}
-            {% endwith %}
-          {% else %}
-            {{ module.name }}
-          {% endif %}
-        </div>
-      {% endfor %}
+        {% for width, module in modules %}
+          <div class="col s{{ width }}">
+            {% if layout_mode %}
+              {{ module.grid_id }}: {{ module.name or "<Unassigned>" }}
+            {% else %}
+              {% if module.html %}
+                {% with config=module.config %}
+                  {% include module.html %}
+                {% endwith %}
+              {% else %}
+                {{ module.name }}
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
       {% endif %}
     </div>
     {% endfor %}

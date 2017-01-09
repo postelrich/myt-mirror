@@ -1,28 +1,18 @@
 {
-    "row_heights": [20, 30, 30, 20],
+    "grid": [
+        [20, [3]], 
+        [30, [2, 7, 3]], 
+        [30, []], 
+        [20, []]
+    ],
     "modules": [
-        [
-            {
-                "width": 3,
-                "name": "counter",
-                "config": {
-                    "operator": "inc",
-                    "start": "5"
-                }
+        {
+            "grid_id": 1,
+            "name": "counter",
+            "config": {
+                "operator": "inc",
+                "start": "5"
             }
-        ],
-        [
-            {
-                "width": 2,
-                "name": "bar"
-            },
-            {
-                "width": 7
-            },
-            {
-                "width": 3,
-                "name": "foobar"
-            }
-        ]
+        }
     ]
 }
