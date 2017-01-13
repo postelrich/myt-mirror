@@ -6,6 +6,11 @@
   {% if layout_mode %}
     <link rel="stylesheet" type="text/css" href="static/css/wireframe.css">
   {% endif %}
+  {% for module in modules %}
+    {% if module.css %}
+			<link rel="stylesheet" type="text/css" href="{{ module.css }}">
+    {% endif %}
+  {% endfor %}
 </head>
 
 <body>
