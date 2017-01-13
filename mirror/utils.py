@@ -1,6 +1,6 @@
 import json
 import os
-from itertools import zip_longest
+from itertools import chain, zip_longest
 from toolz import thread_last, concat, get_in, curry, first, second
 
 

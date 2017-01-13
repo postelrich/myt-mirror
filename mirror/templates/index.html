@@ -14,7 +14,7 @@
     <div class="row" style="height:{{ row_height }}vh">
       {% if modules %}
         {% for width, module in modules %}
-          <div class="col s{{ width }}">
+          <div class="col s{{ width }}" id="block-{{ module.id }}">
             {% if layout_mode %}
               {{ module.grid_id }}: {{ module.name or "<Unassigned>" }}
             {% else %}
@@ -35,6 +35,22 @@
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script src="static/js/module.js"></script>
+  {% for module in modules %}
+    {% if module.js %}
+      <script src="{{ module.js }}"></script>
+    {% endif %}
+  {% endfor %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+			var modules = {{ modules | safe }};
+			for (module of modules) {
+				console.log(module);
+				module_registry[module.name].ready(module.config);
+			}	
+    });
+  </script>
 
 </body>
 
