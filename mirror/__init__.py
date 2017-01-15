@@ -1,3 +1,4 @@
+import importlib
 import jinja2
 import os
 from flask import Flask
@@ -16,3 +17,8 @@ for name in config['module_names']:
 app.jinja_loader = jinja2.ChoiceLoader(loaders)
 
 import mirror.views
+import mirror.modules.counter
+# for m in config['modules']:
+    # if 'py' in m:
+        # print(m['name'])
+        # globals()[m['name']] = importlib.import_module('mirror.modules', m['name'])

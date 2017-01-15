@@ -1,3 +1,3 @@
-from mirror import app
+from mirror import app, socketio
 
-app.run(debug=True)
+socketio.run(app, debug=True)

@@ -1,7 +1,7 @@
 import os
-from copy import deepcopy
 from flask import render_template, request, send_from_directory
-from mirror import app
+from flask_socketio import emit
+from mirror import app, socketio
 
 
 @app.route('/')
@@ -18,3 +18,15 @@ def modules_static(filename):
     if '..' in filename:
         pass
     return send_from_directory(os.path.join(os.path.dirname(__file__), 'modules'), filename)
+
+
+# @socketio.on('connect', namespace='/counter')
+# def counter_connect():
+    # emit('connected', {'msg': 'connected'})
+    # emit('connected', 'Connected')
+
+
+# @socketio.on('count', namespace='/counter')
+# def count_down(config):
+    # print("count")
+    # emit('current_count', {'msg': 1})

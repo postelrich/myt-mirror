@@ -57,7 +57,10 @@ def add_module_files(config):
         module_base_path = os.path.join('modules', module_name)
         file_types = ['css', 'js', 'html', 'py']
         for file_type in file_types:
-            module_file = os.path.join(module_base_path, '.'.join([module_name, file_type]))
+            file_name = module_name
+            if file_type == 'py':
+                file_name = '__init__'
+            module_file = os.path.join(module_base_path, '.'.join([file_name, file_type]))
             if os.path.exists(os.path.join(os.path.dirname(__file__), module_file)):
                 if file_type == 'html':
                     module[file_type] = '.'.join([module_name, file_type])
