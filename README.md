@@ -42,6 +42,40 @@ own space.
 
 The `modules` field is where you configure what is displayed in each space. It is a list of objects. Each object must have a `grid_id` and `name` key. The `grid_id` is an integer that comes from a space in `127.0.0.1:5000?layout=1`, discussed above. The `name` key is the name of the module. The `config` key is an object that is passed to configure the module when it is ran.
 
+Example:
+```
+    "modules": [
+        {
+            "grid_id": 1,
+            "name": "counter",
+            "config": {
+                "operator": "inc",
+                "start": "5"
+            }
+        }
+    ]
+```
+
 ## Module Development
 
+To create a new module requires the following steps:
+
+1. Make module folder
+
+Add folder with the name of the module to `mirror/modules`. Assuming the module is called
+`foobar`, this would be `mirror/modules/foobar`.
+
+2. Add html
+
+Add html file to the new directory and give it the same name as module. In our example this would be `mirror/modules/foobar/foobar.html`. You can write html as normal here. It's advisable to prepend the ids with the module name so they aren't affected by other modules.
+
+3. Add javascript (optional, but I'm assuming you don't want a static module)
+
+Add js file to the new directory and give it the same name as module. In our example this would be `mirror/modules/foobar/foobar.js`. You need to write a ready function and register the module. The ready function is called within the jquery `$.ready` function and used to start the updates of the module.
+
+4. Add python (optional)
+
+If you want to add custom socket endpoints, you can add an `__init__.py` to the new directory. This would be `mirror/modules/foobar/__init__.py`. 
+
+Look at (mirror/modules/counter)[https://github.com/postelrich/myt-mirror/tree/master/mirror/modules/counter] for an example.
 
