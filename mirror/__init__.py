@@ -5,17 +5,22 @@ from flask import Flask
 from flask_socketio import SocketIO
 from mirror.utils import load_config
 
+# Setup application
 app = Flask(__name__)
 socketio = SocketIO(app)
 
+# Load configuration
 config_path = os.path.expanduser("~/prj/myt-mirror/mirror_config.json")
 config = load_config(config_path)
 app.config.update(config)
+
+# Add extra static file locations
 loaders = [app.jinja_loader]
 for name in config['module_names']:
     loaders.append(jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'modules', name)))
 app.jinja_loader = jinja2.ChoiceLoader(loaders)
 
+# Import endpoints
 import mirror.views
 import mirror.modules.counter
 # for m in config['modules']:

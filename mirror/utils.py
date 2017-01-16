@@ -5,6 +5,7 @@ from toolz import thread_last, concat, get_in, curry, first, second
 
 
 def format_config(config):
+    """Format configuration file in a way useful to application."""
     config['module_rows'] = [] 
     grid_id_module_map = {m['grid_id']: m for m in config['modules']}
 
@@ -52,6 +53,7 @@ def validate_config(config):
 
 
 def add_module_files(config):
+    """For each module, add the static and python files to the config."""
     for module in config['modules']:
         module_name = module.get('name', '')
         module_base_path = os.path.join('modules', module_name)
@@ -69,11 +71,21 @@ def add_module_files(config):
 
 
 def load_config(config_path):
+    """Load configuration file
+
+    Parameters
+    ----------
+    config_path : str
+        configuration file path
+
+    Returns
+    -------
+    dict
+    """
     with open(config_path, 'r') as f:
         config = json.load(f)
     format_config(config)
     validate_config(config)
     add_module_files(config)
     config['module_names'] = [m['name'] for m in config['modules']]
-    print(config)
     return config
