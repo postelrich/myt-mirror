@@ -77,5 +77,5 @@ Add js file to the new directory and give it the same name as module. In our exa
 
 If you want to add custom socket endpoints, you can add an `__init__.py` to the new directory. This would be `mirror/modules/foobar/__init__.py`. 
 
-Look at (mirror/modules/counter)[https://github.com/postelrich/myt-mirror/tree/master/mirror/modules/counter] for an example.
+Look at [mirror/modules/counter](https://github.com/postelrich/myt-mirror/tree/master/mirror/modules/counter) for an example.
 
