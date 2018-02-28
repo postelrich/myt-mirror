@@ -50,6 +50,8 @@
   <script type="text/javascript">
     $(document).ready(function() {
 			var modules = {{ modules | safe }};
+      var jsModules = $.map(modules, m => module_registry[m.name]);
+      console.log("jsModules", jsModules);
 			for (module of modules) {
 				console.log(module);
 				module_registry[module.name].ready(module.config);
